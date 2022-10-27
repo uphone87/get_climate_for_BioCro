@@ -22,7 +22,7 @@ for (i in 1:dim(latlon)[1]){
   if(year_start<2001) stop("the starting year cannot be earlier than 2001!contact me for more info!")
   url=paste0("https://power.larc.nasa.gov/api/temporal/hourly/point?Time=LST&parameters=ALLSKY_SFC_PAR_TOT,T2M,RH2M,PRECTOTCORR,WS2M&community=AG&longitude=",lon,"&latitude=",lat,"&start=",year_start,"0101&end=",year_end,"1231&format=CSV")
   outfile_name[i] = paste0("NASA_powerdata_",year_start,"_",year_end,"_","site_",latlon$siteID[i],".csv")
-  download.file(url, destfile = outfile_name[i], method="wget")
+  download.file(url, destfile = outfile_name[i], method="curl")
 }
 
 #then convert it to BioCro's input format
